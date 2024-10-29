@@ -30,7 +30,10 @@ body {
     display: flex;
     gap: 40px;
     @media screen and (max-width: $small-screen) {
-      gap: 10px;
+      gap: unset;
+      padding: 0px 40px;
+      width: 100%;
+      justify-content: space-between;
     }
   }
   button {
