@@ -1,0 +1,42 @@
+$color: #adbdab;
+$primary-color: #599848;
+$background-color: #0d1b08;
+$primary-muted-color: #d6d9d5;
+$primary-variant-color: #2b5da1;
+$secondary-color: #f2994a;
+$white-color: white;
+$black-color: #0e162f;
+$button-width: 10rem;
+$button-height: 44px;
+$input-height: 55px;
+$textarea-height: 7rem;
+$textarea-width: 100%;
+$cancel-color: #c50707;
+$gray-color: #a6a9ae;
+$gray-muted-color: #99a3ba;
+$white-muted-color: #cbd1dc;
+$border-radius: 4px;
+$card-color: #050211d2;
+$small-screen: 480px;
+$medium-screen: 769px;
+$large-screen: 1240px;
+
+:export {
+  color: $color;
+  primary-color: $primary-color;
+  secondary-color: $secondary-color;
+  button-width: $button-width;
+  button-height: $button-height;
+  white-color: $white-color;
+  black-color: $black-color;
+  input-height: $input-height;
+  textarea-height: $textarea-height;
+  textarea-width: $textarea-width;
+  cancel-color: $cancel-color;
+  gray-color: $gray-color;
+  primary-muted-color: $primary-muted-color;
+  white-muted-color: $white-muted-color;
+  gray-muted-color: $gray-muted-color;
+  card-color: $card-color;
+  primary-variant-color: $primary-variant-color;
+}

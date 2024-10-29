@@ -1,0 +1,100 @@
+@import "src/components/ui/__variables";
+
+.hero {
+  width: 100%;
+
+  height: 70vh;
+
+  display: flex;
+
+  gap: 40px;
+
+  background-color: $background-color;
+
+  &__content {
+    width: 100%;
+    padding-top: 80px;
+    h1 {
+      font-size: 48px;
+      color: $white-color;
+      line-height: 80px;
+      font-weight: 800;
+      text-wrap: wrap;
+    }
+    button {
+      margin-top: 24px;
+      width: fit-content !important;
+      padding: 0px 20px !important;
+      background-color: $background-color !important;
+    }
+    @media screen and (max-width: $large-screen) {
+      h1 {
+        font-size: 42px;
+        line-height: 70px;
+        font-weight: 700;
+      }
+    }
+
+    @media screen and (max-width: $medium-screen) {
+      h1 {
+        font-size: 32px;
+        line-height: 50px;
+        font-weight: 600;
+        text-align: center;
+      }
+      padding-top: 40px;
+      .custom-button {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: fit-content;
+      }
+    }
+
+    @media screen and (max-width: $small-screen) {
+      h1 {
+        font-size: 24px;
+        line-height: 40px;
+        font-weight: 600;
+        text-align: center;
+        padding: 0px 12px;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    img {
+      width: 90%;
+      height: 90%;
+      border-radius: 12px;
+    }
+    @media screen and (max-width: $medium-screen) {
+      img {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: $small-screen) {
+      img {
+        height: 400px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $large-screen) {
+    height: fit-content;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    gap: 40px;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  @media screen and (max-width: $small-screen) {
+  }
+}

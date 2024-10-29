@@ -1,0 +1,85 @@
+@import "src/components/ui/__variables";
+
+.products {
+  margin-top: 10px;
+  @media screen and (max-width: $large-screen) {
+    margin-top: 60px;
+  }
+
+  h3 {
+    color: $primary-color;
+    font-weight: 800;
+    font-size: 32px;
+  }
+  p {
+    color: $white-color;
+  }
+
+  &__listing {
+    display: grid;
+
+    gap: 40px;
+
+    row-gap: 60px;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 40px;
+
+    @media screen and (max-width: $large-screen) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: $medium-screen) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: $small-screen) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 280px;
+    background-color: $background-color;
+    border: 0.5px solid $primary-muted-color;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+    button {
+      background-color: $background-color !important;
+    }
+    .custom-button {
+      position: absolute;
+      bottom: -20px;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    h4 {
+      color: $white-color;
+      text-align: center;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    @media screen and (max-width: $small-screen) {
+      height: 250px;
+      h4 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}

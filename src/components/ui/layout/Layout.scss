@@ -1,0 +1,67 @@
+@import "src/components/ui/__variables";
+
+body {
+  height: 100%;
+  background-color: $background-color;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.layout {
+  background-color: $background-color;
+  // border: 0.5px solid $primary-color;
+}
+
+.layout-header {
+  height: 100px;
+  background-color: $background-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 150px;
+  color: $white-color;
+  border-bottom: 0.1px solid $primary-color;
+  li {
+    list-style: none;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  div {
+    display: flex;
+    gap: 40px;
+    @media screen and (max-width: $small-screen) {
+      gap: 10px;
+    }
+  }
+  button {
+    background-color: $background-color !important;
+  }
+
+  @media screen and (max-width: $large-screen) {
+    padding: 0px 70px;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    padding: 0px 50px;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    padding: 0px 12px;
+    flex-direction: column;
+    width: 100%;
+    // gap: 10px;
+    height: 70px;
+    justify-content: center;
+    li {
+      font-size: 16px;
+    }
+    .custom-button {
+      display: none !important;
+    }
+    button {
+      height: 40px !important;
+      width: 100px !important;
+      display: none;
+    }
+  }
+}
