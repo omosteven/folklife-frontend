@@ -8,7 +8,7 @@ const AppRoutes = () => {
 
   const isAuthenticated = userToken?.length > 0;
 
-  const currentPath = window.location.pathname;
+  const currentPath: any = window.location.pathname;
 
   return (
     <Routes>
@@ -17,19 +17,21 @@ const AppRoutes = () => {
           <React.Fragment key={key}>
             <Route
               path={route}
-              element={
-                currentPath !== "/" ? (
-                  isAuthenticated ? (
-                    component
-                  ) : (
-                    <Navigate to="/" />
-                  )
-                ) : isAuthenticated ? (
-                  <Navigate to="/" />
-                ) : (
-                  component
-                )
-              }
+              element={component}
+              // element={
+              //   currentPath !== "/" ||
+              //   currentPath?.includes?.("team") === false ? (
+              //     isAuthenticated ? (
+              //       component
+              //     ) : (
+              //       <Navigate to="/" />
+              //     )
+              //   ) : isAuthenticated ? (
+              //     <Navigate to="/" />
+              //   ) : (
+              //     component
+              //   )
+              // }
             />
           </React.Fragment>
         );

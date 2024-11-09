@@ -1,0 +1,20 @@
+@import "src/components/ui/__variables";
+
+.view-product {
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  h3 {
+    color: $primary-color;
+    font-weight: 800;
+    font-size: 32px;
+  }
+  h4 {
+    color: $white-color;
+    font-size: 18px;
+  }
+  p {
+    color: $white-color;
+  }
+}

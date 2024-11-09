@@ -1,15 +1,17 @@
 import Button from "components/ui/Button";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <header className="layout-header">
       <div>
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Contact Us</li>
+        <Link to="/">Home</Link>
+        <Link to="/about-us">About Us</Link>
+        <Link to="/contact-us">Contact Us</Link>
       </div>
       <div>
-        <Button text="My Cart" />
+        <Button text="Admin" onClick={() => navigate("/team")} />
       </div>
     </header>
   );

@@ -3,6 +3,8 @@
 .home {
   padding: 0px 150px;
 
+  padding-bottom: 100px;
+
   @media screen and (max-width: $large-screen) {
     padding: 0px 70px;
   }

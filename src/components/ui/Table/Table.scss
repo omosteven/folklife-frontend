@@ -2,6 +2,7 @@
 
 .custom-table {
   box-sizing: border-box;
+  overflow: scroll;
 
   table {
     // table-layout: fixed;
@@ -10,6 +11,8 @@
 
   tbody {
     font-size: 0.85rem;
+    background-color: $white-color;
+    color: $black-color;
     td {
       border-bottom: 0.5px solid $gray-muted-color;
       border: 0.5px solid $white-muted-color;

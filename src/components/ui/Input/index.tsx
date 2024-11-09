@@ -57,7 +57,7 @@ const Input = (props: InputTypes) => {
         />
         {hasError && (
           <span className="input-error">
-            {errorMsg ? errorMsg : `${label} is required.`}
+            {errorMsg ? errorMsg : `${label || name} is required.`}
           </span>
         )}
       </div>

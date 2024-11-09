@@ -26,6 +26,15 @@ body {
     font-size: 20px;
     cursor: pointer;
   }
+  a {
+    list-style: none;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    color: $white-color;
+    text-decoration: 2px underline $secondary-color;
+  }
+
   div {
     display: flex;
     gap: 40px;

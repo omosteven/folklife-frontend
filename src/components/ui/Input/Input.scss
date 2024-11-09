@@ -41,6 +41,7 @@
     &-error {
       color: $cancel-color;
       font-size: 0.8rem;
+      text-transform: capitalize;
     }
     &-error-input {
       border: 0.5px solid $cancel-color;

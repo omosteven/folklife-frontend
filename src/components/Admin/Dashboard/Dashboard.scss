@@ -1,0 +1,31 @@
+@import "src/components/ui/__variables";
+
+.dashboard {
+  padding: 40px 150px;
+  min-height: 100vh;
+
+  @media screen and (max-width: $large-screen) {
+    padding: 40px 70px;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    padding: 40px 40px;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    padding: 40px 10px;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      color: $white-color !important;
+    }
+  }
+
+  &__table {
+    margin-top: 32px;
+  }
+}
