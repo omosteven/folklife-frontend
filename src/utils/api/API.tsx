@@ -4,7 +4,7 @@ import { getAuthToken } from "storage";
 export const httpSignal = axios.CancelToken.source();
 
 const logOutUser = () => {
-  return (window.location.href = "");
+  // return (window.location.href = "/team-login");
 };
 
 const CancelToken = axios.CancelToken;
