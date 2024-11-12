@@ -6,6 +6,7 @@ interface TextareaTypes {
   label?: string;
   placeholder?: string;
   onChange?: Function;
+  onBlur?: Function;
   value?: string;
   cols?: number;
   rows?: number;
@@ -39,6 +40,7 @@ const Textarea = (props: TextareaTypes) => {
     required,
     hideLabel,
     register,
+    onBlur,
   } = props;
   return (
     <>
@@ -49,7 +51,8 @@ const Textarea = (props: TextareaTypes) => {
             invertStyle ? "textarea-invert" : ""
           } ${textareaClass} ${hasError ? "textarea-error-input" : ""}`}
           placeholder={placeholder}
-          onChange={(e) => onChange?.(e.target.value)}
+          onChange={(e) => onChange?.(e)}
+          onBlur={onBlur}
           value={value}
           cols={cols}
           rows={rows}

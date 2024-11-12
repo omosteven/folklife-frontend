@@ -1,16 +1,15 @@
 import { createContext, useContext } from "react";
+import { getAuthToken, getUser, setAuthToken, setUser } from "storage";
 
 export const AppContext = createContext({
-  token: "",
-  user: {
-    email: "",
-    city: "",
-    state: "",
-    country: "",
-    dateJoined: "",
+  token: getAuthToken(),
+  user: getUser(),
+  updateUser: (data: any) => {
+    setUser(data);
   },
-  updateUser: (data: any) => {},
-  updateToken: (token: any) => {},
+  updateToken: (token: any) => {
+    setAuthToken(token);
+  },
 });
 
 export const useAppContext = () => {

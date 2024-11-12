@@ -17,6 +17,7 @@ interface ButtonProps {
   isLoading?: boolean;
   status?: string;
   icon?: string;
+  type?: "button" | "submit";
 }
 
 const Button = (props: ButtonProps) => {
@@ -30,11 +31,13 @@ const Button = (props: ButtonProps) => {
     isLoadingText,
     status,
     icon,
+    type,
   } = props;
   return (
     <div className="custom-button">
       <button
         id={id}
+        type={type}
         className={`button ${invertStyle ? "button-invert" : ""} ${className}
          ${
            isLoading || status === statusTypes.LOADING ? "button-disabled" : ""

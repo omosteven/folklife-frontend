@@ -10,4 +10,5 @@ export interface ModalProps {
   hideButton?: Boolean;
   onButtonClick?: Function;
   buttonText?: string;
+  isButtonLoading?: boolean;
 }

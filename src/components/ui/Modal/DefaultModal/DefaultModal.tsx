@@ -13,6 +13,7 @@ const DefaultModal = (props: ModalProps) => {
     hideButton = false,
     onButtonClick,
     buttonText,
+    isButtonLoading,
   } = props;
 
   return (
@@ -28,6 +29,8 @@ const DefaultModal = (props: ModalProps) => {
               <Button
                 className="close--button"
                 text={buttonText ? buttonText : "Okay"}
+                isLoading={isButtonLoading}
+                isLoadingText="Please wait..."
               />
             </div>
           )}

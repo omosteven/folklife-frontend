@@ -6,7 +6,8 @@ interface InputTypes {
   label?: string;
   placeholder?: string;
   onChange?: Function;
-  value?: string;
+  onBlur?: Function;
+  value?: any;
   id?: string;
   name?: string;
   invertStyle?: boolean;
@@ -36,6 +37,7 @@ const Input = (props: InputTypes) => {
     register,
     required = false,
     hideLabel,
+    onBlur,
     type = "text",
   } = props;
 
@@ -49,10 +51,11 @@ const Input = (props: InputTypes) => {
           } ${inputClass} ${hasError ? "input-error-input" : ""}`}
           placeholder={placeholder}
           type={type}
-          onChange={(e) => onChange?.(e.target.value)}
+          onChange={(e) => onChange?.(e)}
           value={value}
           id={id}
           name={name}
+          onBlur={onBlur}
           {...register?.(name, { required })}
         />
         {hasError && (
