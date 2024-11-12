@@ -10,6 +10,10 @@ import { getErrorMessage } from "utils/helper";
 const { LOADING, ERROR, SUCCESS } = dataQueryStatus;
 
 const Dashboard = () => {
+  const [currentTab, setCurrentTab] = useState<"products" | "orders">(
+    "products"
+  );
+
   const [addModal, setAddModal] = useState(false);
   const [viewModal, setViewModal] = useState(false);
 
@@ -17,6 +21,8 @@ const Dashboard = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
+
   const [selectedProduct, selectProduct] = useState<any>({});
 
   const toggleAddModal = () => setAddModal((prev) => !prev);
@@ -37,17 +43,29 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const getOrders = async () => {
+    setStatus(LOADING);
+    setErrorMessage("");
+    try {
+      const {
+        data: { data },
+      } = await API.get("/orders");
+      setStatus(SUCCESS);
+      setOrders(data);
+    } catch (e) {
+      setErrorMessage(getErrorMessage(e));
+      setStatus(ERROR);
+    }
+  };
 
-  const renderBasedOnStatus = () => {
-    switch (status) {
-      case LOADING:
-        return <Loader />;
-      case ERROR:
-        return <ErrorView message={errorMessage} handleRetry={getProducts} />;
-      case SUCCESS:
+  useEffect(() => {
+    currentTab === "products" ? getProducts() : getOrders();
+  }, [currentTab]);
+
+  console.log({ orders });
+  const renderTableBasedOnTab = () => {
+    switch (currentTab) {
+      case "products":
         return (
           <Table
             head={[
@@ -90,6 +108,54 @@ const Dashboard = () => {
             )}
           />
         );
+      case "orders":
+        return (
+          <Table
+            head={[
+              "Product Name",
+              "Full Name",
+              "Phone Number",
+              "Email",
+              "No of Items",
+              "Pricing",
+              "Delivery Address",
+            ]}
+            body={orders?.map(
+              ({
+                deliveryAddress,
+                email,
+                firstName,
+                lastName,
+                noOfItems,
+                phoneNumber,
+                productId,
+              }: any) => {
+                return {
+                  productName: productId?.productName,
+                  fullName: `${firstName} ${lastName}`,
+                  phoneNumber: `${phoneNumber}`,
+                  email: `${email}`,
+                  noOfItems: `${noOfItems} pieces`,
+                  pricing: `${productId?.pricing}`,
+                  deliveryAddress,
+                };
+              }
+            )}
+          />
+        );
+      default:
+        return "";
+    }
+  };
+
+  const renderBasedOnStatus = () => {
+    switch (status) {
+      case LOADING:
+        return <Loader />;
+      case ERROR:
+        return <ErrorView message={errorMessage} handleRetry={getProducts} />;
+      case SUCCESS:
+        return renderTableBasedOnTab();
       default:
         return "";
     }
@@ -98,10 +164,30 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <section className="dashboard__heading">
-        <h3>Manage Your Products Here</h3>
+        <h3>
+          Manage Your {currentTab === "orders" ? "Orders" : "Products"} Here
+        </h3>
 
         <Button text="Add New Product" onClick={toggleAddModal} />
       </section>
+
+      <div
+        style={{
+          marginTop: "16px",
+        }}
+      >
+        <Button
+          text={currentTab === "orders" ? "Show Products" : "Show Orders"}
+          onClick={() => {
+            if (currentTab === "orders") {
+              setCurrentTab("products");
+            } else {
+              setCurrentTab("orders");
+            }
+          }}
+          invertStyle
+        />
+      </div>
 
       <section className="dashboard__table">{renderBasedOnStatus()}</section>
 

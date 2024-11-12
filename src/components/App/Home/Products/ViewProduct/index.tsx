@@ -33,8 +33,15 @@ const ViewProduct = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { productName, noOfUnits, pricing, location, orderCount, _id }: any =
-    selectedProduct || {};
+  const {
+    productName,
+    noOfUnits,
+    pricing,
+    location,
+    orderCount,
+    _id,
+    media,
+  }: any = selectedProduct || {};
   const noOfItemsLeft = noOfUnits - orderCount;
 
   const placeOrder = async (values: {
@@ -96,7 +103,7 @@ const ViewProduct = ({
         />
       ) : (
         <div className="view-product">
-          <img src={assets.images.hero} alt="Product" />
+          <img src={media ? media?.url : assets.images.hero} alt="Product" />
           <h3>{productName}</h3>
           <p>
             N{pricing} | {location} | {noOfItemsLeft} pieces left

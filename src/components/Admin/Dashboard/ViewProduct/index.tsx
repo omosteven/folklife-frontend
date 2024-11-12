@@ -25,7 +25,6 @@ const ViewAdminProduct = ({
   selectedProduct: any;
   handleRefresh: () => void;
 }) => {
-  const [image, setImage] = useState<any>();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -82,7 +81,7 @@ const ViewAdminProduct = ({
     }
   };
 
-  const { productName, noOfUnits, pricing, location }: any =
+  const { productName, noOfUnits, pricing, location, media }: any =
     selectedProduct || {};
 
   const formik = useFormik({
@@ -107,7 +106,7 @@ const ViewAdminProduct = ({
       onButtonClick={formik.handleSubmit}
     >
       <div className="view-product">
-        <img src={assets.images.hero} alt="Product" />
+        <img src={media ? media?.url : assets.images.hero} alt="Product" />
         <h3>{productName}</h3>
         <p>
           N{pricing} | {location}

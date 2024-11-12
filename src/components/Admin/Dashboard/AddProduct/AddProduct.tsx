@@ -1,5 +1,3 @@
-import assets from "assets";
-
 import { DefaultModal, FileInput, Input } from "components/ui";
 import { useState } from "react";
 
@@ -13,6 +11,7 @@ const ProductSchema = Yup.object().shape({
   pricing: Yup.string().required("Pricing is required"),
   noOfUnits: Yup.number().required("No of Units is required"),
   location: Yup.string().required("Please enter the location"),
+  media: Yup.object().required("Please upload media file"),
 });
 
 const AddProduct = ({
@@ -22,8 +21,13 @@ const AddProduct = ({
   toggleModal: () => void;
   handleRefresh: () => void;
 }) => {
-  const [image, setImage] = useState<any>();
+  const [image, setImage] = useState<{
+    url: string;
+    type: string;
+    path: string;
+  } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const addProduct = async (values: {
@@ -31,6 +35,7 @@ const AddProduct = ({
     noOfUnits: number;
     pricing: string;
     location: string;
+    media: { url: string; type: string; path: string } | null;
   }) => {
     setLoading(true);
     setErrorMessage("");
@@ -49,24 +54,65 @@ const AddProduct = ({
     }
   };
 
+  const uploadFile = async (file: File) => {
+    setIsUploading(true);
+    setErrorMessage("");
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await API.post("/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (response.data) {
+        const { url, type, path } = response?.data?.data;
+        setImage({ url, type, path });
+        formik.setFieldValue("media", { url, type, path });
+        toastMessage("File uploaded successfully");
+      }
+    } catch (error: any) {
+      setErrorMessage(error?.response?.data?.message || "File upload failed");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const formik = useFormik({
-    initialValues: { productName: "", noOfUnits: 0, pricing: "", location: "" },
+    initialValues: {
+      productName: "",
+      noOfUnits: 0,
+      pricing: "",
+      location: "",
+      media: null,
+    },
     validationSchema: ProductSchema,
     onSubmit: (values) => {
-      addProduct(values);
+      addProduct({ ...values, media: image });
     },
   });
 
+  const handleSelectFile = (files: FileList) => {
+    const fileToUpload = files?.[0];
+    if (fileToUpload) {
+      uploadFile(fileToUpload);
+    }
+  };
   return (
     <DefaultModal
       isOpen
       onClose={toggleModal}
       buttonText="Add Product"
-      isButtonLoading={loading}
-      onButtonClick={formik.handleSubmit}
+      isButtonLoading={loading || isUploading}
+      onButtonClick={() => {
+        // if (image) {
+        formik.handleSubmit();
+        // }
+      }}
     >
       <div className="view-product">
-        {image && <img src={assets.images.hero} alt="Product" />}
+        {image && <img src={image?.url} alt="Product" />}
 
         <section>
           <h4
@@ -142,9 +188,14 @@ const AddProduct = ({
               marginLeft: "auto",
               width: "fit-content",
               marginRight: "auto",
+              color: "red",
             }}
           >
-            <FileInput labelText="Select Product Image" />
+            <FileInput
+              labelText="Select Product Image"
+              onChange={handleSelectFile}
+            />
+            {formik.errors.media}
           </div>
 
           {errorMessage && (
