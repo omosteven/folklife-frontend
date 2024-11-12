@@ -10,7 +10,7 @@ const logOutUser = () => {
 const CancelToken = axios.CancelToken;
 let requestSignal;
 
-const config = {
+const config = {  
   apiGateway: {
     // BASE_URL:"http://localhost:7000/api/v1"
     BASE_URL: process.env.REACT_APP_DEV_API_BASE_URL,
