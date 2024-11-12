@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero__content">
-        <h1>Experience The Best With ForkLife Solution.</h1>
+        <h1>Experience The Best With ForkLife Solutions.</h1>
         <Button text="Check Our Products" onClick={scrollProductsIntoView} />
       </div>
       <div className="hero__image">

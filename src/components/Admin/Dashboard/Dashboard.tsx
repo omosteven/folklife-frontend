@@ -5,7 +5,7 @@ import AddProduct from "./AddProduct/AddProduct";
 import ViewAdminProduct from "./ViewProduct";
 import API from "utils/api/API";
 import { dataQueryStatus } from "utils/dataQueryStatus";
-import { getErrorMessage } from "utils/helper";
+import { getErrorMessage, getFormattedDate } from "utils/helper";
 
 const { LOADING, ERROR, SUCCESS } = dataQueryStatus;
 
@@ -115,10 +115,12 @@ const Dashboard = () => {
               "Product Name",
               "Full Name",
               "Phone Number",
+              "Whatsapp",
               "Email",
               "No of Items",
               "Pricing",
               "Delivery Address",
+              "Delivery Date",
             ]}
             body={orders?.map(
               ({
@@ -129,15 +131,19 @@ const Dashboard = () => {
                 noOfItems,
                 phoneNumber,
                 productId,
+                deliveryDate,
+                whatsappNo,
               }: any) => {
                 return {
                   productName: productId?.productName,
                   fullName: `${firstName} ${lastName}`,
                   phoneNumber: `${phoneNumber}`,
+                  Whatsapp: `${whatsappNo}`,
                   email: `${email}`,
                   noOfItems: `${noOfItems} pieces`,
                   pricing: `${productId?.pricing}`,
-                  deliveryAddress,
+                  deliveryAddress: `${deliveryAddress}`,
+                  deliveryDate: `${getFormattedDate(deliveryDate)}`,
                 };
               }
             )}

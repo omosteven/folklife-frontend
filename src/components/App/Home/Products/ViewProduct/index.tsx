@@ -1,4 +1,4 @@
-import { DefaultModal, Input, Textarea } from "components/ui";
+import { DatePicker, DefaultModal, Input, Textarea } from "components/ui";
 
 import API from "utils/api/API";
 import { useFormik } from "formik";
@@ -13,11 +13,13 @@ import OrderSuccess from "./OrderSuccess";
 const OrderSchema = Yup.object().shape({
   email: Yup.string().optional(),
   phoneNumber: Yup.string().required("Phone Number is required"),
+  whatsappNo: Yup.string(),
   noOfItems: Yup.number().required("No of Units is required"),
   deliveryAddress: Yup.string().required("Please enter the location"),
   productId: Yup.string().required("Please enter the productId"),
   firstName: Yup.string().required("Please enter your first name"),
   lastName: Yup.string().required("Please enter your last name"),
+  deliveryDate: Yup.date().required("Please choose delivery data"),
 });
 
 const ViewProduct = ({
@@ -52,6 +54,8 @@ const ViewProduct = ({
     productId: string;
     firstName: string;
     lastName: string;
+    whatsappNo: string;
+    deliveryDate: Date;
   }) => {
     setLoading(true);
     setErrorMessage("");
@@ -80,6 +84,8 @@ const ViewProduct = ({
       productId: _id,
       firstName: "",
       lastName: "",
+      whatsappNo: "",
+      deliveryDate: new Date(),
     },
     validationSchema: OrderSchema,
     onSubmit: (values) => {
@@ -160,7 +166,7 @@ const ViewProduct = ({
               errorMsg={formik.errors.email}
             />
             <Input
-              placeholder="Enter Contact Phone"
+              placeholder="Enter Whatsapp/Contact Phone"
               type="text"
               name="phoneNumber"
               label="Contact Phone"
@@ -171,6 +177,20 @@ const ViewProduct = ({
                 formik.errors.phoneNumber && formik.touched.phoneNumber
               )}
               errorMsg={formik.errors.phoneNumber}
+              required
+            />
+            <Input
+              placeholder="Enter Whatsapp No"
+              type="text"
+              name="whatsappNo"
+              label="Whatsapp No"
+              value={formik.values.whatsappNo}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              hasError={Boolean(
+                formik.errors.whatsappNo && formik.touched.whatsappNo
+              )}
+              errorMsg={formik.errors.whatsappNo}
               required
             />
             <Input
@@ -187,6 +207,26 @@ const ViewProduct = ({
               errorMsg={formik.errors.noOfItems}
               required
             />
+            <div
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "fit-content",
+              }}
+            >
+              <DatePicker
+                name="deliveryDate"
+                label="Delivery Date"
+                //  value={formik.values.deliveryDate}
+                onChange={formik.handleChange}
+                //  onBlur={formik.handleBlur}
+                hasError={Boolean(
+                  formik.errors.noOfItems && formik.touched.noOfItems
+                )}
+                errorMsg={formik.errors.noOfItems}
+                required
+              />
+            </div>
             <Textarea
               placeholder="Full Delivery Address"
               name="deliveryAddress"

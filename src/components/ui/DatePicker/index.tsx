@@ -7,6 +7,10 @@ interface DatePickerProps {
   labelClass?: string;
   label?: string;
   onChange?: Function;
+  onBlur?: Function;
+  required?: boolean;
+  hasError?: boolean;
+  errorMsg?: string;
   value?: string;
   id?: string;
   name?: string;
@@ -23,6 +27,9 @@ const DatePicker = (props: DatePickerProps) => {
     id,
     name,
     invertStyle,
+    hasError,
+    errorMsg,
+    onBlur,
   } = props;
   return (
     <>
@@ -31,13 +38,20 @@ const DatePicker = (props: DatePickerProps) => {
         <div className={`${invertStyle ? "div-invert" : ""}`}>
           <input
             type="date"
-            onChange={(e) => onChange?.(e.target.value)}
+            onChange={(e) => onChange?.(e)}
+            // onBlur={onBlur}
             value={value}
             id={id}
             name={name}
           />
+
           <Icon icon="calendar" className="icon" />
         </div>
+        {hasError && (
+          <span className="input-error">
+            {errorMsg ? errorMsg : `${label || name} is required.`}
+          </span>
+        )}
       </div>
     </>
   );
