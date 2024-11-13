@@ -14,6 +14,8 @@ const assets = {
       "https://res.cloudinary.com/dapfixxti/image/upload/v1731439179/IMG-20240917-WA0081_vef6ob.jpg",
   },
   videos: {
+    ponagon1:
+      "https://res.cloudinary.com/dapfixxti/video/upload/v1731439011/VID-20241025-WA0022_vv2kd7.mp4",
     ponagon:
       "https://res.cloudinary.com/dapfixxti/video/upload/v1731439124/VID-20240929-WA0001_wim3jk.mp4",
   },

@@ -15,8 +15,9 @@
     padding: 50px 50px;
   }
 
-  //   @media screen and (max-width: $small-screen) {
-  //   }
+  @media screen and (max-width: $small-screen) {
+    padding: 30px 20px;
+  }
 
   &__heading {
     h3 {
@@ -54,7 +55,7 @@
   &__content {
     margin-bottom: 16px;
     h4 {
-      color: $secondary-color;
+      color: $primary-color;
       font-size: 24px;
     }
     p {

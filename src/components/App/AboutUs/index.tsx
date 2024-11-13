@@ -13,7 +13,7 @@ const AboutUs = () => {
       </section>
 
       <section className="about-us__content">
-        <h4>Pongon Sticker</h4>
+        <h4>Ponagon Herbal Capsule For Arthritis And Rheumatism.</h4>
         <video src={assets.videos.ponagon} autoPlay />
 
         <p>
@@ -43,7 +43,7 @@ const AboutUs = () => {
       </section>
 
       <section className="about-us__content">
-        <h4>Hoprazon Ulcer Sticker</h4>
+        <h4>Hoprazon Herbal Capsule for Ulcer.</h4>
         <div className="about-us__content__images">
           <img src={assets.images.hoprazon} />
           <img src={assets.images.hoprazon1} />

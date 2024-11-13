@@ -8,6 +8,7 @@ body {
 
 .layout {
   background-color: $background-color;
+  min-height: 60vh;
   // border: 0.5px solid $primary-color;
 }
 
@@ -32,7 +33,17 @@ body {
     font-size: 20px;
     cursor: pointer;
     color: $white-color;
-    text-decoration: 2px underline $secondary-color;
+    text-decoration: 2px underline $primary-color;
+  }
+
+  &__left {
+    img {
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+    }
+    margin-left: -20px;
+    align-items: center !important;
   }
 
   div {
@@ -40,9 +51,13 @@ body {
     gap: 40px;
     @media screen and (max-width: $small-screen) {
       gap: unset;
-      padding: 0px 40px;
       width: 100%;
       justify-content: space-between;
+      img {
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+      }
     }
   }
   button {
@@ -58,7 +73,7 @@ body {
   }
 
   @media screen and (max-width: $small-screen) {
-    padding: 0px 12px;
+    padding: 0px 20px;
     flex-direction: column;
     width: 100%;
     // gap: 10px;
@@ -74,6 +89,82 @@ body {
       height: 40px !important;
       width: 100px !important;
       display: none;
+    }
+  }
+}
+
+.layout-footer {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  background-color: $background-color;
+
+  color: $white-color;
+
+  a {
+    list-style: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    color: $white-color;
+    // text-decoration: 2px underline $secondary-color;
+    display: block;
+  }
+
+  padding: 50px 150px;
+
+  @media screen and (max-width: $large-screen) {
+    padding: 50px 70px;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    padding: 50px 50px;
+
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    padding: 50px 20px;
+  }
+
+  div {
+    display: flex;
+    // flex-direction: column;
+    gap: 10px;
+    @media screen and (max-width: $small-screen) {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  &__socials {
+    display: flex !important;
+    align-items: center;
+    @media screen and (max-width: $small-screen) {
+      flex-direction: column;
+      align-items: start;
+    }
+    h3 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+      @media screen and (max-width: $large-screen) {
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: $small-screen) {
+        font-size: 16px;
+      }
+    }
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   }
 }

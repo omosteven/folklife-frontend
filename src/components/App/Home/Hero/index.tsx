@@ -13,7 +13,8 @@ const Hero = () => {
         <Button text="Check Our Products" onClick={scrollProductsIntoView} />
       </div>
       <div className="hero__image">
-        <img src={assets.images.heroWhite} alt="Hero" />
+        {/* <img src={assets.images.heroWhite} alt="Hero" /> */}
+        <video src={assets.videos.ponagon} autoPlay controls />
       </div>
     </section>
   );

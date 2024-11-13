@@ -21,10 +21,12 @@ const ContactUs = () => {
             <FaInbox /> Email: forklifesolutions@gmail.com
           </p>
           <p>
-            <FaPhoneAlt /> Airtel: 08086563502
+            <FaPhoneAlt />
+            08086563502
           </p>
           <p>
-            <FaPhoneAlt /> MTN: 08147912128
+            <FaPhoneAlt />
+            08147912128
           </p>
         </div>
       </section>
