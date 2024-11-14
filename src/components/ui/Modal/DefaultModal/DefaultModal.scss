@@ -5,7 +5,8 @@
   background-color: $background-color;
   border: 0.5px solid rgba($secondary-color, 0.2);
   border-radius: $border-radius !important;
-
+  overflow-y: scroll !important;
+  max-height: 80vh !important;
   @media screen and (max-width: $medium-screen) {
     bottom: 0px !important;
     position: fixed;

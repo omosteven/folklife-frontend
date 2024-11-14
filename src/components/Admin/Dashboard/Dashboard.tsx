@@ -121,6 +121,7 @@ const Dashboard = () => {
               "Pricing",
               "Delivery Address",
               "Delivery Date",
+              "Delivery State",
             ]}
             body={orders?.map(
               ({
@@ -133,6 +134,7 @@ const Dashboard = () => {
                 productId,
                 deliveryDate,
                 whatsappNo,
+                state,
               }: any) => {
                 return {
                   productName: productId?.productName,
@@ -144,6 +146,7 @@ const Dashboard = () => {
                   pricing: `${productId?.pricing}`,
                   deliveryAddress: `${deliveryAddress}`,
                   deliveryDate: `${getFormattedDate(deliveryDate)}`,
+                  state: `${state || "N/A"}`,
                 };
               }
             )}

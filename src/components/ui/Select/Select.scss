@@ -1,8 +1,9 @@
 @import "../_variables";
 
 .custom-select {
+  width: 100%;
   .label {
-    color: $black-color;
+    color: $white-color;
     display: block;
   }
 
@@ -20,6 +21,7 @@
     background: $white-color;
     transition: border 0.3s ease;
     color: $black-color;
+    width: 100%;
     &:focus {
       outline: none;
       border-color: $primary-color;

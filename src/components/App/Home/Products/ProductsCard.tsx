@@ -20,7 +20,7 @@ const ProductsCard = ({
         N{pricing} | {location}
       </p>
       <p>{noOfItemsLeft} pieces left</p>
-      <Button text="View Product" onClick={toggleModal} />
+      <Button text="Place Order" onClick={toggleModal} />
     </div>
   );
 };

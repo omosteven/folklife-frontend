@@ -6,6 +6,7 @@ interface SelectTypes {
   label?: string;
   placeholder?: string;
   onChange?: Function;
+  onBlur?: Function;
   value?: string;
   id?: string;
   name?: string;
@@ -52,7 +53,7 @@ const Select = (props: SelectTypes) => {
           className={`select ${selectClass} ${
             invertStyle ? "input-invert" : ""
           } ${hasError ? "input-error-input" : ""}`}
-          onChange={(e) => onChange?.(e.target.value)}
+          onChange={(e) => onChange?.(e)}
           {...register?.(name, { required })}
         >
           {options?.map((option, key) => (
