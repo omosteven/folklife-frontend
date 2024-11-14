@@ -44,4 +44,8 @@
       border: 0.5px solid $cancel-color;
     }
   }
+  .input-error {
+    color: $cancel-color;
+    font-size: 0.8rem;
+  }
 }

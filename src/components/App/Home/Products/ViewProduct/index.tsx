@@ -287,6 +287,7 @@ const ViewProduct = ({
             <Select
               label="Pick State"
               options={states}
+              name="state"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               hasError={Boolean(formik.errors.state && formik.touched.state)}

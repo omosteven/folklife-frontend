@@ -12,8 +12,8 @@ let requestSignal;
 
 const config = {
   apiGateway: {
-    BASE_URL: "https://forlkife-backend.onrender.com/api/v1",
-    // BASE_URL: process.env.REACT_APP_DEV_API_BASE_URL,
+    // BASE_URL: "https://forlkife-backend.onrender.com/api/v1",
+    BASE_URL: process.env.REACT_APP_DEV_API_BASE_URL,
   },
 };
 
