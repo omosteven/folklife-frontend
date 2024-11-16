@@ -6,7 +6,7 @@
   label {
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: $white-color;
+    color: $white-color !important;
   }
   div {
     border: 1px solid $white-muted-color;
@@ -59,5 +59,9 @@
   div:hover {
     border: 1px solid $primary-color;
     transition: 0.5s;
+  }
+  .input-error {
+    color: $cancel-color;
+    font-size: 14px;
   }
 }

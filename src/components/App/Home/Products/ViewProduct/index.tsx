@@ -4,6 +4,7 @@ import API from "utils/api/API";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import toastMessage from "utils/toast";
+import { startOfDay } from "date-fns";
 
 import "./ViewProduct.scss";
 import assets from "assets";
@@ -55,13 +56,17 @@ const OrderSchema = Yup.object().shape({
   email: Yup.string().optional(),
   phoneNumber: Yup.string().required("Phone Number is required"),
   whatsappNo: Yup.string(),
-  noOfItems: Yup.number().required("No of Units is required"),
+  noOfItems: Yup.number()
+    .min(1, "Please enter atleast one unit.")
+    .required("No of Units is required"),
   deliveryAddress: Yup.string().required("Please enter the location"),
   productId: Yup.string().required("Please enter the productId"),
   firstName: Yup.string().required("Please enter your first name"),
   lastName: Yup.string().required("Please enter your last name"),
   state: Yup.string().required("Please enter your delivery state"),
-  deliveryDate: Yup.date().required("Please choose delivery data"),
+  deliveryDate: Yup.date()
+    .required("Please choose delivery date")
+    .min(startOfDay(new Date()), "Delivery date cannot be in the past"),
 });
 
 const ViewProduct = ({
@@ -97,7 +102,7 @@ const ViewProduct = ({
     firstName: string;
     lastName: string;
     whatsappNo: string;
-    deliveryDate: Date;
+    deliveryDate: any;
     state: string;
   }) => {
     setLoading(true);
@@ -128,7 +133,7 @@ const ViewProduct = ({
       firstName: "",
       lastName: "",
       whatsappNo: "",
-      deliveryDate: new Date(),
+      deliveryDate: new Date().toISOString().split("T")[0],
       state: "",
     },
     validationSchema: OrderSchema,
@@ -136,6 +141,7 @@ const ViewProduct = ({
       placeOrder(values);
     },
   });
+
   return (
     <DefaultModal
       isOpen
@@ -211,7 +217,7 @@ const ViewProduct = ({
             />
             <Input
               placeholder="Enter Whatsapp/Contact Phone"
-              type="text"
+              type="number"
               name="phoneNumber"
               label="Contact Phone"
               value={formik.values.phoneNumber}
@@ -225,7 +231,7 @@ const ViewProduct = ({
             />
             <Input
               placeholder="Enter Whatsapp No"
-              type="text"
+              type="number"
               name="whatsappNo"
               label="Whatsapp No"
               value={formik.values.whatsappNo}
@@ -242,7 +248,7 @@ const ViewProduct = ({
               type="number"
               name="noOfItems"
               label="How Many Pieces?"
-              value={formik.values.noOfItems}
+              value={formik.values.noOfItems?.toLocaleString?.()}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               hasError={Boolean(
@@ -261,13 +267,16 @@ const ViewProduct = ({
               <DatePicker
                 name="deliveryDate"
                 label="Delivery Date"
-                //  value={formik.values.deliveryDate}
-                onChange={formik.handleChange}
-                //  onBlur={formik.handleBlur}
+                value={formik.values.deliveryDate}
+                onChange={(value) =>
+                  formik.setFieldValue("deliveryDate", value)
+                }
+                // onBlur={formik.handleBlur}
                 hasError={Boolean(
-                  formik.errors.noOfItems && formik.touched.noOfItems
+                  formik.errors.deliveryDate && formik.touched.deliveryDate
                 )}
-                errorMsg={formik.errors.noOfItems}
+                min={new Date().toISOString().split("T")[0]}
+                errorMsg={formik.errors.deliveryDate}
                 required
               />
             </div>
