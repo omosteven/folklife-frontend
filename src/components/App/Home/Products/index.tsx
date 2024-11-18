@@ -43,7 +43,7 @@ const Products = () => {
   }, []);
 
   const handleClick = (product: any) => {
-    ReactGA?.event?.({
+    ReactGA?.event?.("product_view", {
       category: "User",
       action: `Clicked on Order View Button - ${product?.productName}-${product?.id}`,
       label: `Order Modal`,
