@@ -73,10 +73,12 @@ const ViewProduct = ({
   toggleModal,
   selectedProduct,
   handleRefresh,
+  handleSubmitClick,
 }: {
   toggleModal: () => void;
   selectedProduct: any;
   handleRefresh: () => void;
+  handleSubmitClick: (product: any) => void;
 }) => {
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -149,7 +151,12 @@ const ViewProduct = ({
       buttonText={isSubmitted ? "Close" : "Place Order"}
       isButtonLoading={loading}
       onButtonClick={() => {
-        isSubmitted ? toggleModal() : formik.handleSubmit();
+        if (isSubmitted) {
+          toggleModal();
+        } else {
+          formik.handleSubmit();
+          handleSubmitClick(selectedProduct);
+        }
       }}
     >
       {isSubmitted ? (

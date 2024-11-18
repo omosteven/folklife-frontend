@@ -8,6 +8,7 @@ import { dataQueryStatus } from "utils/dataQueryStatus";
 import API from "utils/api/API";
 import { getErrorMessage } from "utils/helper";
 import { ErrorView, Loader } from "components/ui";
+import ReactGA from "react-ga4";
 
 const { LOADING, ERROR, SUCCESS } = dataQueryStatus;
 
@@ -41,6 +42,24 @@ const Products = () => {
     getProducts();
   }, []);
 
+  const handleClick = (product: any) => {
+    ReactGA?.event?.({
+      category: "User",
+      action: `Clicked on Order View Button - ${product?.productName}-${product?.id}`,
+      label: `Order Modal`,
+    });
+    // Additional logic for the button
+  };
+
+  const handleSubmitClick = (product: any) => {
+    ReactGA?.event?.({
+      category: "User",
+      action: `Clicked on Order Submit Button - ${product?.productName}-${product?.id}`,
+      label: `Order Modal`,
+    });
+    // Additional logic for the button
+  };
+
   const renderBasedOnStatus = () => {
     switch (status) {
       case LOADING:
@@ -55,6 +74,7 @@ const Products = () => {
                 key={key}
                 toggleModal={() => {
                   selectProduct(product);
+                  handleClick(product);
                   toggleModal();
                 }}
                 product={product}
@@ -79,6 +99,7 @@ const Products = () => {
           toggleModal={toggleModal}
           selectedProduct={selectedProduct}
           handleRefresh={getProducts}
+          handleSubmitClick={handleSubmitClick}
         />
       )}
     </>
