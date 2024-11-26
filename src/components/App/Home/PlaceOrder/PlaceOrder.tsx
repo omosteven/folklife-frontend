@@ -1,5 +1,6 @@
 import {
   Button,
+  Checkbox,
   DatePicker,
   DefaultModal,
   Input,
@@ -19,6 +20,7 @@ import { useEffect, useState } from "react";
 import Select from "components/ui/Select";
 import OrderSuccess from "../Products/ViewProduct/OrderSuccess";
 import { getErrorMessage } from "utils/helper";
+import "../Products/Products.scss";
 
 const states = [
   { label: "Abia", value: "Abia" },
@@ -189,6 +191,7 @@ const PlaceOrder = () => {
     formik.setFieldValue("products", updatedProducts);
   };
 
+  console.log(formik.errors);
   return (
     <>
       <section
@@ -211,13 +214,7 @@ const PlaceOrder = () => {
               <section>
                 <h4>Please, fill in your info to order</h4>
                 <br />
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    width: "100%",
-                  }}
-                >
+                <div className="products__form-field">
                   <Input
                     placeholder="Enter First Name"
                     type="text"
@@ -247,14 +244,8 @@ const PlaceOrder = () => {
                     required
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    width: "100%",
-                    marginTop: "16px",
-                  }}
-                >
+                <br />
+                <div className="products__form-field">
                   <Input
                     placeholder="Enter Contact Email"
                     type="email"
@@ -283,7 +274,8 @@ const PlaceOrder = () => {
                     required
                   />
                 </div>
-                <div className="products_order_items">
+                <br />
+                <div className="products__form-field">
                   <Input
                     placeholder="Enter Whatsapp No"
                     type="number"
@@ -298,10 +290,59 @@ const PlaceOrder = () => {
                     errorMsg={formik.errors.whatsappNo}
                     required
                   />
+                  <DatePicker
+                    name="deliveryDate"
+                    label="Delivery Date"
+                    value={formik.values.deliveryDate}
+                    onChange={(value) =>
+                      formik.setFieldValue("deliveryDate", value)
+                    }
+                    // onBlur={formik.handleBlur}
+                    hasError={Boolean(
+                      formik.errors.deliveryDate && formik.touched.deliveryDate
+                    )}
+                    min={new Date().toISOString().split("T")[0]}
+                    errorMsg={formik.errors.deliveryDate}
+                    required
+                  />
+                </div>
+
+                <br />
+                <Textarea
+                  placeholder="Full Delivery Address"
+                  name="deliveryAddress"
+                  label="Full Delivery Address"
+                  value={formik.values.deliveryAddress}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  hasError={Boolean(
+                    formik.errors.deliveryAddress &&
+                      formik.touched.deliveryAddress
+                  )}
+                  errorMsg={formik.errors.deliveryAddress}
+                  required
+                />
+                <br />
+
+                <div className="products__form-field">
+                  <Select
+                    label="Delivery State"
+                    options={states}
+                    name="state"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    hasError={Boolean(
+                      formik.errors.state && formik.touched.state
+                    )}
+                    errorMsg={formik.errors.state}
+                    required
+                  />
                 </div>
 
                 <section className="products_order_items">
-                  <h4>What Items Do You Want to Order for?</h4>
+                  <h4>
+                    Select Items You Want to Order for from the list below:
+                  </h4>
                   {fetchingProducts ? (
                     <p>
                       We are fetching available products. Please wait a
@@ -310,9 +351,15 @@ const PlaceOrder = () => {
                   ) : (
                     ""
                   )}
-                  {products?.map?.(({ productName, _id }, key) => (
+                  {products?.map?.(({ productName, pricing, _id }, key) => (
                     <div key={key} className="products_order_items__each">
-                      <Input
+                      <Checkbox
+                        label={productName}
+                        onChange={(checked: any) =>
+                          handleProductChange(_id, checked ? 1 : 0)
+                        }
+                      />
+                      {/* <Input
                         placeholder="How many"
                         type="number"
                         name={`product-${_id}`}
@@ -342,55 +389,22 @@ const PlaceOrder = () => {
                             ? "Please add at least one product"
                             : ""
                         }
-                      />
+                      /> */}
                     </div>
                   ))}
                 </section>
-
-                <div className="products_order_items">
-                  <DatePicker
-                    name="deliveryDate"
-                    label="Delivery Date"
-                    value={formik.values.deliveryDate}
-                    onChange={(value) =>
-                      formik.setFieldValue("deliveryDate", value)
-                    }
-                    // onBlur={formik.handleBlur}
-                    hasError={Boolean(
-                      formik.errors.deliveryDate && formik.touched.deliveryDate
-                    )}
-                    min={new Date().toISOString().split("T")[0]}
-                    errorMsg={formik.errors.deliveryDate}
-                    required
-                  />
-                  <Select
-                    label="Pick State"
-                    options={states}
-                    name="state"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    hasError={Boolean(
-                      formik.errors.state && formik.touched.state
-                    )}
-                    errorMsg={formik.errors.state}
-                    required
-                  />
-                </div>
-                <br />
-                <Textarea
-                  placeholder="Full Delivery Address"
-                  name="deliveryAddress"
-                  label="Full Delivery Address"
-                  value={formik.values.deliveryAddress}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  hasError={Boolean(
-                    formik.errors.deliveryAddress &&
-                      formik.touched.deliveryAddress
-                  )}
-                  errorMsg={formik.errors.deliveryAddress}
-                  required
-                />
+                {formik.errors?.products ? (
+                  <p
+                    className="text-danger"
+                    style={{
+                      fontSize: "14px",
+                    }}
+                  >
+                    {formik.errors?.products}
+                  </p>
+                ) : (
+                  ""
+                )}
 
                 {errorMessage && (
                   <p
@@ -403,6 +417,7 @@ const PlaceOrder = () => {
                   </p>
                 )}
               </section>
+              <br />
               <div
                 style={{
                   marginTop: "16px",

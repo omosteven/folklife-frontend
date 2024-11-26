@@ -9,7 +9,7 @@ const Home = () => {
     <div className="home">
       <Hero />
       <PlaceOrder/>
-      <Products />
+      {/* <Products /> */}
     </div>
   );
 };

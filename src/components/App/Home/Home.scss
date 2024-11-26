@@ -5,6 +5,8 @@
 
   padding-bottom: 100px;
 
+  background-color: $background-color !important;
+
   @media screen and (max-width: $large-screen) {
     padding: 0px 70px;
   }
