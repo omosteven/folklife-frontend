@@ -135,15 +135,40 @@ const Dashboard = () => {
                 deliveryDate,
                 whatsappNo,
                 state,
+                products,
               }: any) => {
                 return {
-                  productName: productId?.productName,
+                  productName:
+                    products?.length > 0
+                      ? "Multiple Orders"
+                      : productId?.productName,
                   fullName: `${firstName} ${lastName}`,
                   phoneNumber: `${phoneNumber}`,
                   Whatsapp: `${whatsappNo}`,
                   email: `${email}`,
                   noOfItems: `${noOfItems} pieces`,
-                  pricing: `${productId?.pricing}`,
+                  pricing:
+                    products?.length > 0 ? (
+                      <div>
+                        {products?.map?.(
+                          ({ productId, value }: any, key: number) => (
+                            <div key={key}>
+                              <p>
+                                ({key + 1}) Product: {productId?.productName}
+                              </p>
+                              <p>
+                                ({key + 1}) Pricing:{productId?.pricing}
+                              </p>
+                              <p>
+                                ({key + 1}) Pieces: {value}
+                              </p>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    ) : (
+                      `${productId?.pricing}`
+                    ),
                   deliveryAddress: `${deliveryAddress}`,
                   deliveryDate: `${getFormattedDate(deliveryDate)}`,
                   state: `${state || "N/A"}`,

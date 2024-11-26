@@ -9,8 +9,7 @@ const OrderSuccess = ({
     <div className="view-product">
       <h3>Order Successful</h3>
       <p>
-        Thank you for placing an order for {noOfItems} piece(s) of {productName}
-        . We will be in touch with you via either email or phone.
+        Thank you for placing your order. We will be in touch with you via either email or phone.
       </p>
       <p>
         In the mean time, you can track your order by placing a call to us via
