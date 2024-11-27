@@ -190,8 +190,6 @@ const PlaceOrder = () => {
 
     formik.setFieldValue("products", updatedProducts);
   };
-
-  console.log(formik.errors);
   return (
     <>
       <section
@@ -351,15 +349,19 @@ const PlaceOrder = () => {
                   ) : (
                     ""
                   )}
-                  {products?.map?.(({ productName, pricing, _id }, key) => (
-                    <div key={key} className="products_order_items__each">
-                      <Checkbox
-                        label={productName}
-                        onChange={(checked: any) =>
-                          handleProductChange(_id, checked ? 1 : 0)
-                        }
-                      />
-                      {/* <Input
+                  {products?.map?.(
+                    ({ productName, noOfUnits, pricing, _id }: any, key) => (
+                      <div key={key} className="products_order_items__each">
+                        <Checkbox
+                          label={`${noOfUnits} unit(s) of ${productName} - ₦${Number(
+                            pricing
+                          )?.toLocaleString?.()}`}
+                          onChange={(checked: any) =>
+                            handleProductChange(_id, checked ? 1 : 0)
+                          }
+                        />
+                        {/* {"ss".toLocaleLowerCase?.()} */}
+                        {/* <Input
                         placeholder="How many"
                         type="number"
                         name={`product-${_id}`}
@@ -390,8 +392,9 @@ const PlaceOrder = () => {
                             : ""
                         }
                       /> */}
-                    </div>
-                  ))}
+                      </div>
+                    )
+                  )}
                 </section>
                 {formik.errors?.products ? (
                   <p
