@@ -196,8 +196,10 @@ const PlaceOrder = () => {
         className="products"
         id="products"
         style={{
-          marginTop: "100px",
-          marginBottom: "100px",
+          // marginTop: "100px",
+          // marginBottom: "100px",
+          marginTop: "32px",
+          marginBottom: "32px",
         }}
       >
         {/* <div className="products__listing">{renderBasedOnStatus()}</div> */}
