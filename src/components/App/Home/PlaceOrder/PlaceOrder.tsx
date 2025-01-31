@@ -199,7 +199,7 @@ const PlaceOrder = () => {
           // marginTop: "100px",
           // marginBottom: "100px",
           marginTop: "32px",
-          marginBottom: "32px",
+          // marginBottom: "32px",
         }}
       >
         {/* <div className="products__listing">{renderBasedOnStatus()}</div> */}
@@ -208,11 +208,24 @@ const PlaceOrder = () => {
           <OrderSuccess noOfItems={4} productName={productName} />
         ) : (
           <>
-            <h3>Place Order For Our Product</h3>
+            <h3
+              className="center"
+              style={{
+                textAlign: "center",
+              }}
+            >
+              Place Order For Our Product
+            </h3>
             {/* <p>Go through our recent listing and place your order</p> */}
             <form className="view-product" onSubmit={formik.handleSubmit}>
               <section>
-                <h4>Please, fill in your info to order</h4>
+                <h4
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  Please, fill in your info to order
+                </h4>
                 <br />
                 <div className="products__form-field">
                   <Input

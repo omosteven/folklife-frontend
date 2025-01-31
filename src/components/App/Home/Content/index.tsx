@@ -4,22 +4,22 @@ import { Link } from "react-router-dom";
 
 const testimonials = [
   {
-    image: assets.images.ponagon,
+    image: assets.images.testimonial1,
   },
   {
-    image: assets.images.hoprazon,
+    image: assets.images.testimonial2,
   },
   {
-    image: assets.images.hoprazon1,
+    image: assets.images.testimonial3,
   },
   {
-    image: assets.images.heroWhite,
+    image: assets.images.testimonial4,
   },
   {
-    image: assets.images.hoprazon,
+    image: assets.images.testimonial1,
   },
   {
-    image: assets.images.ponagon,
+    image: assets.images.testimonial2,
   },
 ];
 
@@ -31,22 +31,41 @@ const Content = () => {
   return (
     <section className="content">
       <div>
-        <h1>
+        <h1 className="center">
           Are you tired of constant joint pain dictating your daily activities?
-          Are you struggling with stiffness that makes even simple tasks
-          daunting?
         </h1>
-        <p>
+        <div className="image">
+          <img
+            src={assets.images.page2}
+            className="center"
+            alt="Are you tired?"
+          />
+        </div>
+        {/* <p>
           Discover <span>Ponagon</span> – a natural remedy designed to alleviate
           arthritis, rheumatism, spondylosis, sciatica, and gout, helping you
           move freely and live pain-free.
-        </p>
+        </p> */}
       </div>
       <br />
+      <br />
       <div>
-        <h1>
+        <h1 className="center">Discover Ponagon – a natural remedy</h1>
+        <div className="image">
+          <img
+            src={assets.images.page3}
+            className="center"
+            alt="Are you tired?"
+          />
+        </div>
+      </div>
+      <br />
+
+      <br />
+      <div>
+        <h1 className="center">
           Join over 3,000 satisfied users who have transformed their lives with
-          Ponagon.
+          Ponagon
         </h1>
         <div className="content__testimonials">
           {testimonials.map(({ image }, key) => (
@@ -59,8 +78,72 @@ const Content = () => {
 
       <br />
       <br />
-
       <div>
+        <h1 className="center">
+          Why Quick Fixes Fail...Surface Symptoms vs. Root Causes
+        </h1>
+        <div className="flex-images">
+          <div className="imags">
+            <img src={assets.images.page5} alt="Are you tired?" />
+          </div>
+          <div className="images">
+            <img src={assets.images.page5_1} alt="Are you tired?" />
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <br />
+      <div>
+        <h1 className="center">Introducing Ponagon</h1>
+        <p className="center">
+          Ponagon combines ancient herbal wisdom with modern science.
+        </p>
+        <div className="image">
+          <img
+            src={assets.images.page6}
+            className="center"
+            alt="Are you tired?"
+          />
+        </div>
+      </div>
+      <br />
+      <br />
+      <div>
+        <h1 className="center">Benefits of Ponagon</h1>
+        <p className="center">
+          Rapid Relief... Natural Ingredients... NAFDAC Approved...
+        </p>
+        <div className="pbenefit-images">
+          <div className="image-left">
+            <img src={assets.images.page7} alt="Are you tired?" />
+          </div>
+          <div className="images">
+            <img src={assets.images.page7_1} alt="Are you tired?" />
+            <img src={assets.images.page7_3} alt="Are you tired?" />
+            <img src={assets.images.page7_2} alt="Are you tired?" />
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <h1 className="center">
+          Don’t let arthritis control your life any longer...
+        </h1>
+        <div className="image">
+          <img
+            src={assets.images.page8}
+            className="center"
+            alt="Are you tired?"
+          />
+        </div>
+      </div>
+      <br />
+
+      {/* <div>
         <h1>Why have traditional treatments not worked for you?</h1>
         <div>
           <h2>1. Quick Fixes Fail - Why?</h2>
@@ -116,7 +199,7 @@ const Content = () => {
           Don’t let arthritis control your life any longer. Order Ponagon today
           and start your journey to a pain-free, active lifestyle!
         </Link>
-      </div>
+      </div> */}
       <br />
     </section>
   );
