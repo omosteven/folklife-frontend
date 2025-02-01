@@ -34,9 +34,9 @@ const PostFormContent = () => {
         <div>
           <h1 className="center">Have Questions? We are here to help!</h1>
           <div className="middle center">
-            <p className="center">Phone: 08086563502</p>
+            <p className="center">Phone: 08147912128</p>
             <p className="center">Email: forklifesolutions@gmail.com</p>
-            <p className="center">WhatsApp: 08147912128</p>
+            <p className="center">WhatsApp: 08086563502</p>
           </div>
         </div>
       </div>

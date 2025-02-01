@@ -35,7 +35,7 @@ const Content = () => {
         <h1 className="center">
           Are you tired of constant joint pain dictating your daily activities?
         </h1>
-        <p>
+        <p className="middle center">
           Arthritis is one of the most common chronic conditions worldwide,
           affecting millions of people of all ages. It is not just one disease
           but a broad term covering over 100 different types of joint disorders,
