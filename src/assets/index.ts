@@ -18,6 +18,17 @@ import page7_3 from "./images/page_7_3.jpeg";
 import page8 from "./images/page_8.jpeg";
 import page9 from "./images/page_9.jpeg";
 import page9_1 from "./images/page_9_1.jpeg";
+import extra1 from "./images/extra_1.jpeg";
+import extra2 from "./images/extra_2.jpeg";
+import extra3 from "./images/extra_3.jpeg";
+import extra4 from "./images/extra_4.jpeg";
+import extra5 from "./images/extra_5.jpeg";
+import review1 from "./images/review_1.jpeg";
+import review2 from "./images/review_2.jpeg";
+import review3 from "./images/review_3.jpeg";
+import review4 from "./images/review_4.jpeg";
+import review5 from "./images/review_5.jpeg";
+import review6 from "./images/review_6.jpeg";
 
 const assets = {
   images: {
@@ -38,6 +49,17 @@ const assets = {
     testimonial2,
     testimonial3,
     testimonial4,
+    extra1,
+    extra2,
+    extra3,
+    extra4,
+    extra5,
+    review1,
+    review2,
+    review3,
+    review4,
+    review5,
+    review6,
     hero,
     heroWhite,
     map: "https://res.cloudinary.com/dapfixxti/image/upload/v1731439555/isolate-golden-location-pin-white-background-web-location-point-pointer-by-3d-render-removebg-preview_ctyovc.png",

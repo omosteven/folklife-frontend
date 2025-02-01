@@ -30,6 +30,15 @@ const PostFormContent = () => {
             <img src={assets.images.page9_1} alt="Are you tired?" />
           </div>
         </div>
+        <br />
+        <div>
+          <h1 className="center">Have Questions? We are here to help!</h1>
+          <div className="middle center">
+            <p className="center">Phone: 08086563502</p>
+            <p className="center">Email: forklifesolutions@gmail.com</p>
+            <p className="center">WhatsApp: 08147912128</p>
+          </div>
+        </div>
       </div>
     </section>
   );

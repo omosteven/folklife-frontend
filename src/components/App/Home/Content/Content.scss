@@ -135,22 +135,44 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
-    .image-left{
+    .image-left {
       width: 100%;
-      img{
+      img {
         width: 100%;
       }
     }
     .images {
       display: flex;
-      gap:20px;
+      gap: 20px;
       @media screen and (max-width: $medium-screen) {
-      display: grid;
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
       img {
         width: 100%;
       }
     }
+  }
+  .middle {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+  }
+
+  .center {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  li {
+    font-size: 16px;
+    list-style: none;
+  }
+  ol {
+    line-height: 30px;
+  }
+  .small{
+    font-size: 14px;
   }
 }
