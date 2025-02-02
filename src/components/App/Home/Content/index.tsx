@@ -318,7 +318,7 @@ const Content = () => {
         </p>
       </div>
       <div className="center">
-        <Button text="Buy Ponagon Now" onClick={scrollProductsIntoView} />
+        <Button text="Order Now" onClick={scrollProductsIntoView} />
       </div>
       <br />
       <br />
@@ -362,7 +362,7 @@ const Content = () => {
           With Ponagon, you can experience real improvement in just 21 days!
         </p>
         <div className="center">
-          <Button text="Buy Ponagon Now" onClick={scrollProductsIntoView} />
+          <Button text="Order Now" onClick={scrollProductsIntoView} />
         </div>
       </div>
       <br />
@@ -386,7 +386,7 @@ const Content = () => {
         </div>
         <br />
         <div className="center">
-          <Button text="Buy Ponagon Now" onClick={scrollProductsIntoView} />
+          <Button text="Order Now" onClick={scrollProductsIntoView} />
         </div>
       </div>
 
@@ -427,7 +427,7 @@ const Content = () => {
           Ponagon – your natural solution to arthritis relief!
         </p>
         <div className="center">
-          <Button text="Buy Ponagon Now" onClick={scrollProductsIntoView} />
+          <Button text="Order Now" onClick={scrollProductsIntoView} />
         </div>
       </div>
       <br />
@@ -459,7 +459,7 @@ const Content = () => {
           </ol>
         </p>
         <div className="center">
-          <Button text="Buy Ponagon Now" onClick={scrollProductsIntoView} />
+          <Button text="Order Now" onClick={scrollProductsIntoView} />
         </div>
       </div>
       <br />

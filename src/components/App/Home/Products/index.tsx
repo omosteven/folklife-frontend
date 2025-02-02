@@ -6,10 +6,11 @@ import ViewProduct from "./ViewProduct";
 import "./Products.scss";
 import { dataQueryStatus } from "utils/dataQueryStatus";
 import API from "utils/api/API";
-import { getErrorMessage } from "utils/helper";
+import { getErrorMessage, getFormattedDate } from "utils/helper";
 import { ErrorView, Loader } from "components/ui";
 import ReactGA from "react-ga4";
 import ReactPixel from "react-facebook-pixel";
+import { trackEvent } from "utils/facebookPixel";
 
 const { LOADING, ERROR, SUCCESS } = dataQueryStatus;
 
@@ -44,9 +45,20 @@ const Products = () => {
   }, []);
 
   const handleClick = (product: any) => {
+    trackEvent("Purchase", {
+      product_id: product?.id,
+      product_name: product?.productName,
+      value: product?.pricing,
+      currency: "N",
+      time_purchase: getFormattedDate(),
+    });
+
     ReactPixel.track("Purchase", {
-      value: `${product?.productName}-${product?.id}`,
-      currency: product?.pricing,
+      product_id: product?.id,
+      product_name: product?.productName,
+      value: product?.pricing,
+      currency: "N",
+      time_purchase: getFormattedDate(),
     });
 
     ReactGA?.event?.("product_view", {
