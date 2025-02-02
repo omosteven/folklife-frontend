@@ -9,6 +9,7 @@ import API from "utils/api/API";
 import { getErrorMessage } from "utils/helper";
 import { ErrorView, Loader } from "components/ui";
 import ReactGA from "react-ga4";
+import ReactPixel from "react-facebook-pixel";
 
 const { LOADING, ERROR, SUCCESS } = dataQueryStatus;
 
@@ -43,11 +44,17 @@ const Products = () => {
   }, []);
 
   const handleClick = (product: any) => {
+    ReactPixel.track("Purchase", {
+      value: `${product?.productName}-${product?.id}`,
+      currency: product?.pricing,
+    });
+
     ReactGA?.event?.("product_view", {
       category: "User",
       action: `Clicked on Order View Button - ${product?.productName}-${product?.id}`,
       label: `Order Modal`,
     });
+
     // Additional logic for the button
   };
 
