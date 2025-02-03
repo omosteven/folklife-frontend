@@ -7,8 +7,10 @@ const options = {
   debug: false,
 };
 
+const advancedMatching: any = { em: "forklife@gmail.com" };
+
 const initFacebookPixel = () => {
-  ReactPixel.init(pixelId, {} as any, options);
+  ReactPixel.init(pixelId, advancedMatching, options);
   ReactPixel.pageView();
 };
 
